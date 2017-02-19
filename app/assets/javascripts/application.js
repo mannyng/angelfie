@@ -23,8 +23,6 @@
 //= require angular-rails-templates
 //= require ui_app
 //= require pakg_app
-//= require_tree ./controllers
-//= require_tree ./services
-//= require_tree ./directives
+//= require_tree ./angular
 //= require_tree ./templates
 //= require_tree .
