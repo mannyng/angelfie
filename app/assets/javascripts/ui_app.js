@@ -1,4 +1,4 @@
-(function () {
+//(function () {
 var myapp = angular.module('Nfor_App', 
       ['ngRoute',
        'ngResource',
@@ -16,4 +16,4 @@ var myapp = angular.module('Nfor_App',
  } ] );
    
 
-}) ();
+//}) ();
