@@ -534,7 +534,7 @@ myapp.controller("NavCtrl",['$scope', 'Auth', function($scope, Auth){
 
 myapp.controller("Parcel_Ctrl",['$state', function ($state){
   //$state.transitionTo('express1_index');
- });
+ }]);
 
 myapp.controller("Pkg_Ctrl",  ["$scope", '$state', "$resource","Auth",
  function($scope, $state, $resource, Auth) {
@@ -625,7 +625,7 @@ myapp.controller("Setting_Detail_Ctrl",  ["$scope", '$state', "$resource","Auth"
 
 myapp.controller('Time_Ctrl', ['$scope', function($scope) {
  $scope.format = 'M/d/yy h:mm:ss a';
-  }])
+  }]);
 myapp.directive('myCurrentTime', ['$interval', 'dateFilter',
  function($interval, dateFilter) {
 
