@@ -7,7 +7,7 @@ var app = angular.module('pakg_app',
       'ui.bootstrap',
       'templates']);
 
-app.controller("NavRorCtrl", function($scope, Auth){
+app.controller("NavRorCtrl",['$scope','Auth', function($scope, Auth){
 
    $scope.signedIn = Auth.isAuthenticated;
    $scope.logout = Auth.logout;
@@ -26,7 +26,7 @@ app.controller("NavRorCtrl", function($scope, Auth){
    $scope.$on('devise:logout', function (e, user){
      $scope.user = {};
    });
-});
+}]);
 
 
 

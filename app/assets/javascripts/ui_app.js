@@ -14,7 +14,8 @@ var myapp = angular.module('Nfor_App',
      $rootScope.$stateParams = $stateParams;
  } ] );
 
-myapp.config(function ($routeProvider) {
+myapp.config(['$routeProvider',
+    function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'index.html',
@@ -89,9 +90,11 @@ myapp.config(function ($routeProvider) {
         redirectTo: '/'
       });
 
-});
+  }
+]);
 
-myapp.config(function($stateProvider, $urlRouterProvider) {
+myapp.config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/")
       $stateProvider
@@ -245,9 +248,8 @@ myapp.config(function($stateProvider, $urlRouterProvider) {
       }
      }
     });
-
- 
-});
+}
+]);
 
 myapp.directive('myTabs', function() {
     return {
@@ -299,9 +301,9 @@ myapp.directive("shipmentSummary", function() {
       }
 });
    
-myapp.controller("Aboutus_Ctrl", function ($state){
+myapp.controller("Aboutus_Ctrl", ['$state', function ($state){
   //$state.transitionTo('express1_index');
- });
+ }]);
 
 myapp.controller("Addcheckin_Ctrl",  ["$scope", '$state', "$resource","Auth", '$stateParams',
  function($scope, $state, $resource, Auth, $stateParams) {
@@ -394,7 +396,7 @@ myapp.controller('AuthCtrl', [ '$scope', '$state','Auth', function($scope, $stat
   }
  ]);
 
-myapp.controller('CarouselDemoCtrl', function($scope) {
+myapp.controller('CarouselDemoCtrl',['$scope', function($scope) {
    $scope.myInterval = 5000;
    $scope.noWrapSlides = false;
    $scope.active = 0;
@@ -445,7 +447,7 @@ myapp.controller('CarouselDemoCtrl', function($scope) {
       }
       return array;
     }
-});
+}]);
 
 myapp.controller('Checkin_Ctrl', ['$scope', '$http',
   function($scope , $http) {
@@ -468,7 +470,7 @@ myapp.controller('Checkin_Ctrl', ['$scope', '$http',
  }
 ]);
 
-myapp.controller('Dropdown_Ctrl', function($scope, $log) {
+myapp.controller('Dropdown_Ctrl',['$scope', '$log', function($scope, $log) {
    $scope.items = [
     'The first choice!',
     'And another choice for you.',
@@ -491,25 +493,25 @@ myapp.controller('Dropdown_Ctrl', function($scope, $log) {
 
   $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
 
-}); 
+}]); 
 
-myapp.controller("Exp1_Ctrl", function ($state){
+myapp.controller("Exp1_Ctrl",['$state', function ($state){
   $state.transitionTo('express1_index');
- });
+ }]);
 
-myapp.controller("Exp_Ctrl", function ($state){
+myapp.controller("Exp_Ctrl",['$state', function ($state){
   $state.transitionTo('express_index');
- });
+ }]);
 
-myapp.controller ("Home_Ctrl", function ($state) {
+myapp.controller ("Home_Ctrl",['$state', function ($state) {
  $state.transitionTo('express');
- });
+ }]);
 
-myapp.controller("Logistics_Ctrl", function ($state){
+myapp.controller("Logistics_Ctrl",['$state', function ($state){
   //$state.transitionTo('express1_index');
- });
+ }]);
 
-myapp.controller("NavCtrl", function($scope, Auth){
+myapp.controller("NavCtrl",['$scope', 'Auth', function($scope, Auth){
 
    $scope.signedIn = Auth.isAuthenticated;
    $scope.logout = Auth.logout;
@@ -528,9 +530,9 @@ myapp.controller("NavCtrl", function($scope, Auth){
    $scope.$on('devise:logout', function (e, user){
      $scope.user = {};
    });
-});
+}]);
 
-myapp.controller("Parcel_Ctrl", function ($state){
+myapp.controller("Parcel_Ctrl",['$state', function ($state){
   //$state.transitionTo('express1_index');
  });
 
