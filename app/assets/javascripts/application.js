@@ -21,8 +21,5 @@
 //= require angular-bootstrap
 //= require angular-messages
 //= require angular-rails-templates
-//= require ui_app
-//= require pakg_app
-//= require_tree ./angular
 //= require_tree ./templates
 //= require_tree .
