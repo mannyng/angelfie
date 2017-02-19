@@ -1,0 +1,51 @@
+
+<section ng-controller="NavCtrl" class="pull-right">
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+    <div class="btn-group btn-group-md" role="group" aria-label="menu">
+      <button type="button" class="btn btn-default" ui-sref="express1_index">
+       <i class="glyphicon glyphicon-home" aria-hidden="true"></i>
+        Express
+      </button>
+       <button type="button" class="btn btn-default" ui-sref="parcel">
+       <i class="glyphicon glyphicon-gift" aria-hidden="true"></i>
+        Parcel & eCommerce
+      </button>
+     <button type="button" class="btn btn-default" ui-sref="logistics">
+      <i class="glyphicon glyphicon-plane" aria-hidden="true"></i>
+        Logistics
+      </button>
+       <button type="button" class="btn btn-default" ui-sref="aboutus">
+       <i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i>
+        About Us
+      </button>
+<div class="btn-group" uib-dropdown keyboard-nav>
+   <button id="button-template-url" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+      <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+      MyAccount <span class="caret"></span>
+    </button>
+   <ul class="dropdown-menu" uib-dropdown-menu template-url="dropdown.html" aria-labelledby="button-template-url"></ul>
+   </div>
+  </div>
+</nav>
+
+</div> 
+</section>
+
+<section class="main">
+<!--<h1>Burrittoes</h1>-->
+<div ng-controller="Time_Ctrl">
+Current time is: <span my-current-time="format"></span>
+</div>
+
+<div ui-view=""></div>
+<div ui-view="contents"></div>
+<div ui-view="contacts"></div>
+<div ui-view="packages"></div>
+<div ui-view="settings"></div>
+<div ui-view="express"></div>
+<div ui-view="login"></div>
+<p ui-view="hin" class="navbar-text pull-right"></p>
+</section>
+

@@ -1,0 +1,190 @@
+
+<div class="row">
+
+<div class="col-md-6">
+<article ng-controller="Checkin_Ctrl">
+     <section ng-controller="NavCtrl">
+      <em class="info">
+       Welcome {{user.email}}
+      </em>
+   </section>
+<section class='search-form'>
+  <form>
+   <div class="input-group input-group-lg">
+   <label for="tracks" class="sr-only" >Tracking Number</label>
+   <input type= "text" name="tracks" class="form-control input-md" placeholder="Tracking Number" ng-change="search(tracks)" ng-model="tracks">
+   <span class="input-group-btn">
+    <button class="btn btn-primary btn-md" ng-click="search(tracks)">
+    Track Shipment
+    </button>
+   </span>
+  </div>
+ </form>
+ <h1 class="searchedFor" ng-if="searchedFor">
+  <small>Searched for:</small>
+   {{searchedFor}}
+ </h1>
+</section>
+
+<section class="search-results" ng-if="checkins.length > 0">
+  <header>
+    <h1 class="h3">Results</h1>
+  </header>
+     <ol class="list-group">
+        <li class="list-group-item clearfix" ng-repeat="checkin in checkins">
+
+ <h2 class="h3"> {{ checkin.notice }} </h2>
+
+         <h3><small class="text-uppercase">Checked in</small> {{ checkin.time_checked_in | date : "short" }}</h3>
+       
+    <h2 class="h3"><small>Location: {{ checkin.location }}</small></h2>
+
+             
+          <h4 class="pull-right"> Tracking Number: {{ checkin.tracking }}</h4>
+
+      </li>
+    </ol>
+  </section>
+
+  <section class="search-results" ng-if="checkins.length < 1" style="margin-top:30px;">
+   <div ng-controller="CarouselDemoCtrl">
+     <div style="height: 305px">
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+      <img ng-src="{{slide.image}}" style="margin:auto;">
+      <div class="carousel-caption">
+       <!--<h4>Slide {{slide.id}}</h4>-->
+       <p>{{slide.text}}</p>
+       </div>
+       </div>
+      </div>
+     </div>
+     <!--<div class="row">
+      <div class="col-md-6">
+       <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+        <button type="button" class="btn btn-info" ng-click="randomize()">Randomize slides</button>
+        <div class="checkbox">
+        <label>
+        <input type="checkbox" ng-model="noWrapSlides">
+        Disable Slide Looping </label>
+       </div>
+       </div>
+      <div class="col-md-6">
+       Interval, in millisecond: <input type="number" class="form-control" ng-model="myInterval">
+      <br />Enter a negative number or 0 to stop the interval.
+     </div>
+    </div>-->
+ </div>
+  </section>
+
+</article>
+</div>
+
+
+<div class="col-md-6">
+<section>
+
+
+<div class="clearfix">
+<my-tabs>
+<my-pane title="Tracking">
+   <p class="lead">
+<h2 class="h3">Monitor Shipments with ProView</h2>
+ProView is an online express tracking service. We offer real-time shipment monitoring and automatic notifications via email or text for all of your express pickups and deliveries.
+  </p>
+  <my-tabs>
+    <my-pane title="Overview">
+      <p class="lead">
+<h2 class="h3">What is ProView</h2>
+ProView is our web-based tracking service for Express account holders that provides automatic notifications to you and anyone you specify – via email or text message – when shipments are picked up and delivered. ProView also lets you monitor shipments online by account number, status and more.
+This means you're always in the know, whether you're in the office or on the go. And best of all, it provides the shipment information you need to keep your customers and colleagues up to date and in the loop – for free!
+</p>
+     </my-pane>
+
+     <my-pane title="Get Started">
+  <p class="lead">
+<p class="h5">Before you starting using the shipment monitoring features of Angelfire ProView, you need to:</p>
+  <ul>
+   <li> Have a Angelfire Express account number</li>
+   <li> Be sure you have all your account numbers (if you have multiple accounts) that you want to monitor </li>
+   <li> Request a PIN for each account number</li>
+  </ul>
+Your PIN will let you and only you activate your Angelfire accounts in ProView. If you use several Angelfire Express accounts, you will need to request a PIN for each account.
+   <ul>
+   <li> Upon receipt of your PIN, activate your account by registering with Angelfire ProView </li>
+  </ul>
+Please ensure you have a PIN per account before registering so that you are able to successfully complete your registration process.
+
+ </p>
+     </my-pane>
+     <my-pane title="Request Pin">
+  <p class="lead">
+<p class="h5">Request a PIN by Phone – our Angelfire Sales team will be happy to support you in the PIN and registration process.<br/>
+Contact your local Angelfire Sales Representative</p>
+ </p>
+     </my-pane>
+  </my-tabs>
+</my-pane>
+
+<my-pane title="Shipping">
+  <h2 class="h3">Express Shipping</h2>
+    <p class="h5">Start shipping today! Here’s where you can send a parcel, get express shipping rates, find locations and learn more about shipping with Angelfire Express. We’re here to support you with our Customs expertise, variety of shipping solutions and wealth of knowledge in international shipping.</p>
+    <my-tabs>
+    <my-pane title="Shipping Advice">
+      <p class="h5">
+        Get the facts upfront from Express Delivery Experts. A Waybill must be completed for every express shipment you send with Angelfire – it helps to ensure timely, accurate and secure delivery.
+        <h2 class="h4">Why do I need a Waybill?</h2>
+     <ul>
+      <li> It tells Angelfire where your shipment is going, what service you require and how you intend to pay.</li>
+      <li>It tells you the terms and conditions upon which we provide our service. Please read these carefully as they limit and in some cases exclude our liability.</li>
+      <li>It gives you proof of consignment, with a unique number you can use on our web site to track your shipment.</li>
+      <li>It tells Customs what's in your shipment, so that it gets cleared quickly and speeds through to its final destination without delay.</li>
+     </ul>
+    All waybills have an expiration date. They cannot be used past that date.
+       </p>
+        <my-tabs>
+         <my-pane title="Surcharges">
+          <h2 class="h3">Feul Surchages</h2>
+            <p class="h5">
+              Changes in fuel prices have resulted in increased overall costs for the transport industry, necessitating a variable fuel surcharge which may rise, fall or be removed, in line with movements in fuel prices.
+            </p>
+         </my-pane>
+         <my-pane title="Dangerous Goods">
+           <h2 class="h4">Guide to Shipping Dangerous Goods</h2>
+            <p class="h5">Angelfire Express has significant experience in carrying approved Dangerous Goods. Learn more about conditions and regulations to ensure your shipments are fully compliant.
+            <h2 class="h4">Shipping Dangerous Goods</h2>
+               Angelfire is an established carrier of Dangerous Goods and as a leading transportation and logistics company, Angelfire Express adheres to the following regulations:</p>
+            <ul>
+               <li><b>IATA</b> for air transport, applicable within all countries which work under the ICAO regulations and any airline under the IATA regulations</li>
+               <li><b>ADR</b> for road transport, applicable within all countries that have adopted the ADR convention in their legislation and additionally within Europe, the EU directives concerning the transport of Dangerous Goods (Dangerous Goods Safety Advisor)</li>
+               <li>Shippers are responsible to confirm if their dangerous goods shipments will transit to destination by air or road and prepare the shipment accordingly</li>
+            </ul>
+            <p class="h5">To speak to your local Dangerous Goods expert if you are unsure about which regulations apply to you, please contact Customer Service.</p>
+         </my-pane>
+         <my-pane title="Advice">
+            <h2 class="h4">Packaging Advice</h2>
+             <p class="h5">Parcels can travel many thousands of miles through Angelfire's sophisticated global network to reach their destinations. Angelfire does everything we can to ensure packages are always delivered on time and in great condition.<br/>
+Packing your parcels with proper materials and care help ensure your shipments arrive safely and intact.</p>
+         </my-pane>
+        </my-tabs>
+     </my-pane>
+
+       <my-pane title="Customs advice">
+         <p class="h5">Our online tools and practical advice can help you understand the world of Customs and its complex terminology, paperwork and guidelines.
+         <h2 class="h4">Customs Services and Support</h2>
+We’re your personalized Customs expert! Angelfire processes millions of customs entries every day. We use local expertise to understand diverse Customs regulations – which means for our customers – shipments are cleared quickly and efficiently. </p>
+        </my-pane>
+
+  </my-tabs>
+      
+</my-pane>
+
+</my-tabs>
+</div>
+
+
+
+</section>
+</div>
+
+</div>

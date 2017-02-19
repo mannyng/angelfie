@@ -1,0 +1,17 @@
+{
+  "name": "dsl-generated-dependencies",
+  "dependencies": {
+    "angular": "~> 1.5",
+    "angular-resource": "latest",
+    "bootstrap-sass-official": "latest",
+    "angular-ui-router": "latest",
+    "angular-route": "latest",
+    "angular-ui-grid": "latest",
+    "angular-devise": "latest",
+    "angular-bootstrap": "latest",
+    "angular-messages": "latest"
+  },
+  "resolutions": {
+    "angular": "1.5"
+  }
+}

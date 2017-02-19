@@ -1,0 +1,27 @@
+<h2 class="h3">Shipment Details</h2>
+
+<section>
+   <uib-alert ng-show="alert"
+   type="{{alert.type}}"
+    close="closeAlert()">
+   {{alert.message}}
+    </uib-alert>
+</section>
+
+<article class="well well-sm"  ng-controller="ShipmentDetailController" ng-init="setPackageId(pack.id)">
+
+<shipment-summary   pack="shipment"> </shipment-summary>
+<ul>
+ <li>
+   <a>{{pack.pk_name}}</a>
+ </li>
+</ul>
+<div class="text-right">
+ <button ng-click="deactivate()"
+ class="btn btn-sm btn-danger">
+ <i class="glyphicon glyphicon-ban-circle"></i>
+  Deactivate Customer
+ </button>
+</div>
+
+</article>

@@ -1,0 +1,68 @@
+<div class="row" class="clearfix">
+ 
+  <div class="col-md-2">
+      <section class="pull-right">
+     <% if user_signed_in? %>
+      <em class="info">
+       Welcome <%= current_user.email %>
+      </em>
+     <% end %>
+   </section>
+
+  </div>
+
+<div class="col-md-9">
+ <article class="well well-sm">
+   <small>Packages</small>
+<%= render partial: "pager", locals: { page: @page } %>
+    <table class="table table-striped">
+    <thead>
+     <tr>
+       <th>Description</th>
+       <th>City</th>
+       <th>Tracking</th>
+       <th>Shipped</th>
+     </tr>
+</thead>
+<tbody>
+<% @package_settings.each do |shipment| %>
+<tr>
+<td><%= shipment.description %></td>
+<td><%= shipment.rv_city %></td>
+<td><%= link_to shipment.tracking, new_package_check_ins_path(shipment) %></td>
+<td><%= l shipment.created_at.to_date %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%= render partial: "pager", locals: { page: @page } %>
+</article>
+
+ <article class="well well-sm">
+    <table class="table table-striped">
+    <small>Tracking List</small>
+   <thead>
+     <tr>
+       <th>Notice</th>
+       <th>Location</th>
+       <th>Tracking</th>
+       <th>Check In</th>
+     </tr>
+</thead>
+<tbody>
+<% @checkin_settings.each do |tracking| %>
+<tr>
+<td><%= tracking.notice %></td>
+<td><%= tracking.location %></td>
+<td><%= link_to tracking.tracking, check_in_path(tracking) %></td>
+<td><%= tracking.time_checked_in.strftime("%b %d %Y %I:%M:%P") %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%= render partial: "pager", locals: {checkin_settings: @checkin_settings, page: @page } %>
+</article>
+</div>
+
+
+</div>

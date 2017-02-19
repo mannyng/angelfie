@@ -1,0 +1,43 @@
+<div class="row">
+
+<article class="col-md-6 col-md-offset-3">
+
+<section uib-alert ng-show="alert" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert()">
+  {{alert.message}}
+
+</section>
+
+
+<div class="page-header">
+  <h1>Register</h1>
+</div>
+
+<form ng-submit="register()">
+
+  <div class="row">
+   <div class="form-group col-md-8 col-md-offset-2">
+     <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+   </div>
+  </div>
+
+  <div class="row">
+   <div class="form-group col-md-8 col-md-offset-2">
+     <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+   </div>
+  </div>
+
+  <div class="row">
+   <div class="form-group col-md-8 col-md-offset-2">
+     <input type="password" class="form-control" placeholder="Password Confirmation" ng-model="user.password_confirmation">
+   </div>
+  </div>
+
+  <button class="btn btn-lg btn-primary">
+  <i class="glyphicon glyphicon-registration-mark" aria-hidden="true"></i>
+  Register
+ </button>
+
+</form>
+
+</article>
+</div>

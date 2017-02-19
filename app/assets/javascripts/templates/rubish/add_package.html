@@ -1,0 +1,266 @@
+<form novalidate name="form">
+  <div class="row">
+    <div class="col-md-6">
+      <article class="panel panel-primary">
+        <header class="panel-heading">
+          <h3 class="h3">Reciever</h3>
+        </header>
+        <section class="panel-body">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-group">
+                <label class="sr-only" for="rv_name">Reciever Name</label>
+                <input type="text" name="rv_name" class="form-control" ng-model="rv_name" required>
+                <p class="help-block" ng-messages="form.rv_name.$error">
+                  <span ng-message="required">Reciever Name is required</span>
+                </p>
+              </div>
+            </div>
+       
+        <div class="col-md-6">
+          <div class="form-group has-feedback" ng-class="{
+            'has-error': form.rv_email.$invalid && form.rv_email.$dirty,
+            'has-success': form.rv_email.$valid && form.rv_email.$touched
+          }">
+            <label for="rv_email" class="sr-only">Reciever Email</label>
+            <input type="email" name="rv_email" class="form-control" ng-model="rv_email" required>
+            <p class="help-block" ng-messages="form.rv_email.$error">
+              <span ng-message="required">Reciever email is required</span>
+              <span ng-message="rv_email">Email must look like an email</span>
+            </p>
+          </div>
+         </div>
+
+         <div class="col-md-6">
+          <div class="form-group has-feedback" ng-class="{
+            'has-error': form.rv_phone.$invalid && form.rv_phone.$dirty,
+            'has-success': form.rv_phone.$valid && form.rv_phone.$touched
+          }">
+            <label for="rv_phone" class="sr-only">Reciever Phone</label>
+            <input type="telephone" name="rv_phone" class="form-control" ng-model="rv_phone" required>
+            <p class="help-block" ng-messages="form.rv_phone.$error">
+              <span ng-message="required">Reciever phone is required</span>
+              <span ng-message="rv_phone">Phone must look like a phone</span>
+            </p>
+          </div>
+         </div>
+ 
+
+        </section>
+        <footer class="panel-footer">
+          <h2 class="h4">Please ensure you fill in correct informations.</h2>
+        </footer>
+      </article>
+      <article class="panel panel-default">
+        <header class="panel-heading">
+          <h2>Reciever Address</h2>
+        </header>
+        <section class="panel-body">
+          <div class="form-group">
+            <label for="rv_street" class="sr-only">
+              Street address
+            </label>
+            <input type="text" class="form-control" name="rv_street" ng-model="rv_street" required>
+            <p class="help-block" ng-messages="form.rv_street.$error">
+              <span ng-message="required">Street is required</span>
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="rv_city" class="sr-only">City</label>
+                <input type="text" class="form-control" name="rv_city" ng-model="rv_city" required>
+                <p class="help-block" ng-messages="form.rv_city.$error">
+                  <span ng-message="required">City is required</span>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <label for="state" class="sr-only">State</label>
+                <input type="text" class="form-control" name="rv_state" ng-model="rv_state" required pattern="[A-Z][A-Z]">
+                <p class="help-block" ng-messages="form.rv_state.$error">
+                  <span ng-message="required">State is required</span>
+                  <span ng-message="pattern">State must look like a two-letter state code</span>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group has-feedback"  ng-class="{
+                'has-error': form.rv_zip.$invalid && form.rv_zip.$dirty,
+                'has-success': form.rv_zip.$valid && form.rv_zip.$touched
+              }">
+                <label for="zip" class="sr-only">
+                  Zip
+                </label>
+                <input type="text" class="form-control" name="rv_zip" ng-model="rv_zip" required pattern="\d\d\d\d\d">
+                <p class="help-block" ng-messages="form.rv_zip.$error">
+                  <span ng-message="required">Zip is required</span>
+                  <span ng-message="pattern">Zip must be five digits</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="rv_country" class="sr-only">Country</label>
+                <input type="text" class="form-control" name="rv_country" ng-model="rv_country" required>
+                <p class="help-block" ng-messages="form.rv_country.$error">
+                  <span ng-message="required">Country is required</span>
+                </p>
+              </div>
+            </div>
+           </div>
+
+        </section>
+      </article>
+    </div>
+    <div class="col-md-6 billing-info">
+      <article class="panel panel-default">
+        <header class="panel-heading">
+          <h2 class="h4">Pickup Info</h2>
+        </header>
+        <section class="panel-body">
+
+          <article class="well well-sm">
+            <header>
+           <h1 class="h5">
+                Pickup Address
+                <small>
+                <input type="checkbox" ng-model="shipment.billingSameAsPickup">Same as billing?
+                </small>
+              </h1>
+            </header>
+
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-group">
+                <label class="sr-only" for="pk_name">Reciever Name</label>
+                <input type="text" name="pk_name" class="form-control" ng-model="pk_name" required>
+                <p class="help-block" ng-messages="form.pk_name.$error">
+                  <span ng-message="required">Pickup Name is required</span>
+                </p>
+              </div>
+            </div>
+           </div>
+ 
+              <div class="form-group">
+                <label for="street-address" class="sr-only">
+                  Street address
+                </label>
+                <input type="text" class="form-control" name="pk_street" ng-model="pk_street" required>
+                <p class="help-block" ng-messages="form.pk_street.$error">
+                  <span ng-message="required">Pickup street is required</span>
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="city" class="sr-only">City</label>
+                    <input type="text" class="form-control" name="pk_city" ng-model="pk_city" required>
+                    <p class="help-block" ng-messages="form.pk_city.$error">
+                      <span ng-message="required">city is required</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="state" class="sr-only">State</label>
+                    <input type="text" class="form-control" name="pk_state" ng-model="pk_state" required pattern="[A-Z][A-Z]">
+               <p class="help-block" ng-messages="form.pk_state.$error">
+                      <span ng-message="required">State is required</span>
+                      <span ng-message="pattern">State must look like a two-letter state code</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="zip" class="sr-only">
+                      Zip
+                    </label>
+                    <input type="text" class="form-control" name="pk_zip" ng-model="pk_zip" required pattern="\d\d\d\d\d">
+                    <p class="help-block" ng-messages="form.pk_zipcode.$error">
+                      <span ng-message="required">Zip is required</span>
+                      <span ng-message="pattern">Zip must be five digits</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+ <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="pk_country" class="sr-only">Country</label>
+                <input type="text" class="form-control" name="pk_country" ng-model="pk_country" required>
+                <p class="help-block" ng-messages="form.pk_country.$error">
+                  <span ng-message="required">Pickup country is required</span>
+                </p>
+              </div>
+            </div>
+           </div>
+
+          </article>
+
+        <hr>
+          <article class="panel panel-primary">
+
+        <header class="panel-heading">
+          <h3 class="h3">Pickup Info</h3>
+        </header>
+        <section class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="sr-only" for="weight">Weight</label>
+                <input type="text" name="weight" class="form-control" ng-model="weight" required>
+                <p class="help-block" ng-messages="form.weight.$error">
+                  <span ng-message="required">Weight is required</span>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="sr-only" for="height">Height</label>
+                <input type="text" name="height" class="form-control" ng-model="height" >
+                <p class="help-block" ng-messages="form.height.$error">
+                  <span ng-message="required">Height is required</span>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="sr-only" for="width">Width</label>
+                <input type="text" name="height" class="form-control" Placeholder="Width"  ng-model="width" >
+                <p class="help-block" ng-messages="form.width.$error">
+                  <span ng-message="required">Width is required</span>
+                </p>
+              </div>
+            </div>
+        </div>
+     <div class="form-group">
+       <label for="content" class="sr-only">Shipment Description</label>
+       <textarea rows="5%" class="form-control" name="content" placeholder="Shipment Description"  ng-model="description" required></textarea>
+      </div>
+
+        </section>
+        <footer class="panel-footer">
+          <div class="form-group">
+  <label for="category" class="sr-only">Category</label>
+  <select class="form-control" name="category" ng-model="category" ng-options="category.id as category.name for category in categories" required>
+   <option value="">- Choose Category -</option>
+  </select>
+</div>
+
+          
+        </footer>
+
+          </article>
+
+        </section>
+      </article>
+      <div class="text-right">
+        <button ng-click="addNewShipment()" ng-disabled="form.$invalid || form.$pristine" class="btn btn-lg btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<h2>All shipments</h2>
+<ul>
+ <li ng-repeat="shipment in shipments">
+  <a ui-sref="shipments.detail({shipmentId:shipment.id})">{{shipment.pl_name}}</a> </li>
+ </ul>
+

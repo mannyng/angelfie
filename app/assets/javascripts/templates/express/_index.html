@@ -1,0 +1,32 @@
+<article class="express" style="margin-top:50px;">
+<div class="row">
+
+
+<div class="col-md-10">
+<section>
+
+<!--<div ng-controller="Time_Ctrl">
+Current time is: <span my-current-time="format"></span>
+</div>-->
+
+ <div ui-view=""></div>
+ <div ui-view="index"></div>
+ <div ui-view="new_shipment"></div>
+ <div ui-view="list"></div>
+
+</section>
+</div>
+
+<div class="col-md-2">
+<ul class="nav nav-pills nav-stacked">
+  <li role="presentation"><a  ui-sref="add_shipment">Schedule pickup</a></li>
+  <li role="presentation" ng-controller="NavCtrl" ng-show="signedIn()"><a  ui-sref="express_settings">Setting</a></li>
+  <li role="presentation"><a  ui-sref="express1_index">Customer Support</a></li>
+  <li role="presentation"><a ui-sref="internation">Export Services</a></li>
+  <li role="presentation"><a ui-sref="small_biz">Small Business Solutions</a></li>
+
+</ul>
+</div>
+
+</div>
+</article>

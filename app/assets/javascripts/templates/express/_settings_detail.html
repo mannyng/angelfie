@@ -1,0 +1,72 @@
+<section>
+   <uib-alert ng-show="alert"
+   type="{{alert.type}}"
+    close="closeAlert()">
+   {{alert.message}}
+    </uib-alert>
+</section>
+
+<article class="panel panel-body">
+
+<section class="clearfix">
+<!--<shipment-summary   pack="setting"> </shipment-summary>-->
+<!--<p>{{ user.email }}</p>--><!--Making sure all is well-->
+<!--<p>{{ user.role }}</p>--><!--Making sure correct role-->
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Tracking Number: {{setting.tracking}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Shipped on: {{setting.date_opened | date}} </h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Sender: {{setting.pk_name}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Sender city: {{setting.pk_city}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">State: {{setting.pk_state}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Sent from: {{setting.pk_country}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Description: {{setting.description}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Reciever's name: {{setting.rv_name}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Reciever city: {{setting.rv_city}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">State: {{setting.rv_state}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-xs-12">
+<h2 class="h5 text-uppercase">Sent to: {{setting.rv_country}}</h2>
+</div></div>
+
+<div class="row"><div class="col-md-7 col-xs-7">
+<h2 class="small text-uppercase">Status: {{setting.status}}</h2>
+</div><div class="col-md-4 col-xs-5">
+<h2 class="small text-uppercase">Weight: {{setting.weight}}</h2>
+</div> </div>
+
+</section>
+
+
+<section class="panel panel-body">
+<div ui-view=''></div>
+</section>
+
+</article>

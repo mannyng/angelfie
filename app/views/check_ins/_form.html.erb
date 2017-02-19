@@ -1,0 +1,34 @@
+<div class="panel" style="margin: 10px; padding: 20px;">
+
+  <%= form_for(@checkin) do |f| %>
+  <% if @checkin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checkin.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% @checkin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+       <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :location, class:"form-control" %>
+       </div>
+       <div class="form-group">
+        <%= f.label :notice, class:"label-control" %>
+        <%= f.text_area :notice, class: "form-control" %>
+       </div>
+      <div class="form-group">
+        <%= f.label :tracking_number %>
+        <%= f.text_field :tracking, class: "form-control", :value => @package.tracking %>    </div>
+        <%= f.hidden_field :package_id, :value => params[:package_id] %>
+     
+        <div class="actions">
+        <%= f.submit "Checkin", :class => "btn btn-info"%>
+       <%= link_to "Back", settings_path, class: "btn btn-danger pull-right glyphicon glyphicon-remove"%> 
+      </div>
+
+  <% end %>
+
+</div>

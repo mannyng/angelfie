@@ -1,0 +1,30 @@
+<h2 class="small">Checkin the package</h2>
+<div class="row">
+
+   <div class="col-md-2">
+     <p> You have to carefully check in the shipment</p>
+      <section class="panel panel-danger">
+      <h2 class="small">Shipment details</h2>
+      <small>Reciever Name: <%= @package.rv_name %></small><br />
+       <small>Street: <%= @package.rv_street %></small><br />
+       <small>City: <%= @package.rv_city %></small><br />
+       <small>State: <%= @package.rv_state %></small><br />
+       <small>Country: <%= @package.rv_country %></small><br/>
+       <small>Phone: <%= @package.rv_phone %></small> <br />
+      </section>
+      <section class="panel panel-info">
+       <h2 class="small">Senders details</h2>
+       <small>Sender Name: <%= @package.pk_name %></small>
+       <small>Street: <%= @package.pk_street %></small>
+       <small>State: <%= @package.pk_state %></small><br />
+       <small>Country: <%= @package.pk_country %></small><br/>
+       <small>Description: <%= @package.description %></small>
+
+      </section>
+   </div>
+
+  <div class="col-md-8 well well-sm">
+    <%= render "form" %>
+  </div>
+
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: one
+  package: one
+  time_checked_in: 2017-01-31 03:21:50
+  notice: MyString
+
+two:
+  location: two
+  package: two
+  time_checked_in: 2017-01-31 03:21:50
+  notice: MyString

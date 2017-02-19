@@ -1,0 +1,7 @@
+
+<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="button-template-url">
+  <!--<li role="menuitem"><a href="#">Action in template</a></li>-->
+  <li role="menuitem" ng-hide="signedIn()"><a ui-sref="login">Signin</a></li>
+  <li role="menuitem" ng-hide="signedIn()"><a ui-sref="register">Register</a></li>
+  <li role="menuitem" ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
+</ul>

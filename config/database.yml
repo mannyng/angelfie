@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: shine
+  password: shine
+  pool: 5
+development:
+  <<: *default
+  database: yello_development
+
+test:
+  <<: *default
+  database: yello_test
+
+production:
+  <<: *default
+  database: yello_production
+  username: mantli
+  password: <%= ENV['EMAIR_DATABASE_PASSWORD'] %>
+

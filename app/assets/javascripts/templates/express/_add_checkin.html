@@ -1,0 +1,32 @@
+<form novalidate name="checkin_form">
+
+     <div class="row"><div class="col-md-10">
+      <div class="form-group">
+       <label for="location" class="sr-only">Current Location</label>
+       <input type="text" name="location" class="form-control"  placeholder="Current Location"  ng-model="location" required></input>
+      </div></div>
+     </div>
+
+     <div class="row"><div class="col-md-10">
+      <div class="form-group">
+       <label for="location" class="sr-only">Current Location</label>
+       <input type="text" name="tracking" class="form-control"  placeholder="{{setting.tracking}}"  ng-model="tracking" required></input>
+      </div></div>
+     </div>
+
+      <div class="row"><div class="col-md-10">
+      <div class="form-group">
+       <label for="notice" class="sr-only">Current Status</label>
+       <textarea rows="5%" class="form-control" name="content" placeholder="Current Status"  ng-model="notice" required></textarea>
+      </div></div>
+    </div>
+<div class="text-right">
+ <button ng-click="checkinShipment(setting)" class="btn btn-sm btn-danger">
+ <i class="glyphicon glyphicon-ban-circle"></i>
+  Check In
+ </button>
+</div>
+
+</form>
+
+        

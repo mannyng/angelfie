@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="span3">
+   <div class="pa-sidebar well well-small">
+   <ul class="nav nav-list">
+    <li ng-class="{ active: $state.includes('shipments.list') }"><a ui-sref="shipments.list">All shipments</a></li>
+    <li class="nav-header">Top shipments<li>
+     <li ng-repeat="shipment in shipments | limitTo:2" ui-sref-active="active">
+ <a ui-sref="shipments.detail({shipmentId:shipment.id})">{{shipment.pk_name}}</a> </li>
+</ul>
+<hr>
+ <button class="btn" ng-click="goToRandom()">Show random contact</button>
+ <div ui-view="menuTip" class="slide"></div>
+ </div>
+ </div>
+
+ <!-- Our unnames main ui-view for this template -->
+<div ui-view class="span9 slide"></div>
+</div>
