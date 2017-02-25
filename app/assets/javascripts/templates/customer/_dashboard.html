@@ -1,0 +1,28 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-2">
+<h2 class="h4">Welcome <small> {{currentuser.firstname}} you are an <section ng-controller="NavCtrl">{{user.role[1]}}</section></small></h2>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<article class= "panel panel-info">
+<!--<div class="clearfix">-->
+<!-- original markup -->
+ <section class="panel panel-head">
+    <h4 class="container-fluid text-uppercase"> Customer Dashboard</h4>
+ </section>
+  <section class="panel panel-body">
+          <h2 class="h3 pull-right"><small class="text-uppercase">Last Name:  {{ currentuser.lastname }}</small></h2>
+          <h2 class="h3"><small class="text-uppercase">First Name:  {{ currentuser.firstname }}</small></h2>
+
+        <h3 class="h5 pull-right" ng-controller="NavCtrl"><small class="text-uppercase">Role: </small> {{ user.role[1] }}</h3>
+
+     <h3 class="h5"><small class="text-uppercase">Email: </small> {{ currentuser.email }}</h3> <hr/>
+    <small class="text-uppercase pull-right">Phone: {{ currentuser.phone1 }}</small>
+    <button class="btn btn-info text-uppercase" ng-controller="NavCtrl" ng-show="signedIn()" ui-sref="express_settings1">Your Shipments</button>
+</section>
+<!--</div>-->
+</article>
+</div>
+</div>

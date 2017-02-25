@@ -4,11 +4,11 @@ class SettingsController < ApplicationController
   #layout 'admin_layout'
 
 
-
  def index
-   @page = (params[:page] || 0).to_i
-   @package_settings = Package.all.limit(4)
-   @checkin_settings = CheckIn.all.limit(4)
+   @package_settings = Package.order(:tracking).page params[:page]
+   @checkin_settings = CheckIn.order(:tracking).page params[:page]
+   @customers = Customer.order(:user_id).page params[:page]
+   
      respond_to do |format|
         format.html
         format.json {render json: @package_settings }

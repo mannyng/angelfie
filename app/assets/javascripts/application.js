@@ -20,6 +20,8 @@
 //= require angular-devise
 //= require angular-bootstrap
 //= require angular-messages
+//= require ui_app
+//= require pakg_app
 //= require angular-rails-templates
 //= require_tree ./templates
 //= require_tree .

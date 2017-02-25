@@ -1,7 +1,7 @@
 class PackagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_package, only: [:show, :edit, :update, :destroy]
-  before_filter :user_owns_package?
+  before_action :user_owns_package?
    
 
   def index
@@ -25,27 +25,36 @@ class PackagesController < ApplicationController
    end
   
    def new
-    
+     @package = Package.new
+     @package.tracking = SecureRandom.random_number(999999999999)
+     #@package.customer = current_user.customer
+     @package.date_opened = Time.now.to_date
+
+     respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @package }
+    end
+
    end
 
    def create
-
-    @package = Package.create(package_params)
+    @customer = current_user.customer
+    @package = Package.new(package_params)
     @package.tracking = SecureRandom.random_number(999999999999)
-    @package.customer_id = current_user.customer.id
+    @package.customer_id = @customer.id
     @package.date_opened = Time.now.to_date
 
-   respond_to do |format|
-    if @package.save
-     format.html {redirect_to @package}
-     format.json {render json: @package, status: :created, location: @package}
-    else
-      format.html {render action: "new" }
-      format.json {render json: @package.errors, status: :unprocessable_entity}
-    end
-   end     
+      respond_to do |format|
+       if @package.save!
+        format.html #{redirect_to @package}
+        format.json { head :no_content } #{render :show, status: :created, location: @package}
+      else
+       format.html #{render action: "new" }
+       format.json {render json: @package.errors, status: :unprocessable_entity}
+      end
+    end     
 
-   end
+  end
 
    def edit
 
@@ -61,8 +70,8 @@ class PackagesController < ApplicationController
 
  private
 
-   def package_params
-    params.require(:package).permit(:description, :category_id, :rv_name, :rv_email, :rv_phone, :rv_street, :rv_city, :rv_state, :rv_zip, :rv_country, :pk_name, :pk_street, :pk_city, :pk_state, :pk_zip, :pk_country)
+    def package_params
+    params.require(:package).permit(:description, :customer, :category_id, :tracking, :date_opened, :status, :rv_name, :rv_email, :rv_phone, :rv_street, :rv_extra_address, :rv_city, :rv_zip, :rv_state, :rv_country, :weight, :height, :width, :pk_name, :pk_street, :pk_extra_address, :pk_city, :pk_zip, :pk_state, :pk_country)
    end
 
    def set_package
@@ -72,7 +81,7 @@ class PackagesController < ApplicationController
     # User may only access their own account(s), unless they are admin
     def user_owns_package?
       if @package
-        @package.customer.user_id == current_user.id || current_user.role.include?("admin")
+        @package.customer_id == current_user.customer.id || current_user.role.include?("admin")
       end
     end
   

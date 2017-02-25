@@ -14,7 +14,8 @@
 <div class="col-md-9">
  <article class="well well-sm">
    <small>Packages</small>
-<%= render partial: "pager", locals: { page: @page } %>
+<%#= render partial: "pager", locals: { page: @page } %>
+  <%= rel_next_prev_link_tags @package_settings %>
     <table class="table table-striped">
     <thead>
      <tr>
@@ -35,7 +36,8 @@
 <% end %>
 </tbody>
 </table>
-<%= render partial: "pager", locals: { page: @page } %>
+<%#= render partial: "pager", locals: { page: @page } %>
+<%= rel_next_prev_link_tags @package_settings %>
 </article>
 
  <article class="well well-sm">
@@ -60,9 +62,53 @@
 <% end %>
 </tbody>
 </table>
-<%= render partial: "pager", locals: {checkin_settings: @checkin_settings, page: @page } %>
+<%#= render partial: "pager", locals: {checkin_settings: @checkin_settings, page: @page } %>
+
+<%= paginate @checkin_settings %>
+<%= render partial: "checkin_pager"%>
 </article>
+
+ <article class="well well-sm">
+  <section class="search_form pull-right">
+    <header>
+      <h6>Search</h6>
+   </section>
+   <small>Customers</small>
+<%#= render partial: "pager", locals: { page: @page } %>
+<%= rel_next_prev_link_tags @customers %>
+    <table class="table table-striped">
+    <thead>
+     <tr>
+       <th>First Name</th>
+       <th>Last Name</th>
+       <th>Email</th>
+       <th>Phone</th>
+       <th>Roles</th>
+     </tr>
+</thead>
+<tbody>
+<% @customers.each do |customer| %>
+<tr>
+<td><%= customer.firstname %></td>
+<td><%= customer.lastname %></td>
+<td><%= link_to customer.email, edit_customer_path(customer) %></td>
+<td><%= customer.phone1 %></td>
+<td><%= link_to customer.user.role, edit_user_path(customer.user_id) %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%#= render partial: "pager", locals: { page: @page } %>
+<%= rel_next_prev_link_tags @customers %>
+</article>
+
+
 </div>
 
-
+ <article>
+    <div ng-controller="Pakg_Cust_Ctrl" class="col-md-10">
+      <div id="grid1" ui-grid="gridOptions" class="grid" ></div>
+      <div ng-style="{ height: col.headerRowHeight }" ng-repeat="col in customerData" ng-class="col.colIndex()" class="ngHeaderCell" ng-header-cell></div>
+    </div>
+</article>
 </div>

@@ -5,12 +5,19 @@ Rails.application.routes.draw do
  root to: 'home#index'
 
   resources :categories, only: [:index]
-  resources :check_ins, :packages, :settings
+  resources :check_ins, :packages, :settings, :customers
+  resources :user, only: [:edit, :update]
 
   resources :packages do
     resource :check_ins
   end
 
   resources :admin, only: [:index]
+
+  scope :api do
+    get "/user(.:format)" => "user#index"
+    get "/user/:id(.:format)" => "user#show"
+    get "/user/:id/customer(.:format)" => "user#customer"
+  end
 
 end
