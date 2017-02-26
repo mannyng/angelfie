@@ -4,10 +4,12 @@ var app = angular.module('pakg_app',
       'ngResource',
       'ui.router',
       'ui.grid',
+      'ui.grid.edit',
+       'ui.grid.cellNav',
       'ui.bootstrap',
       'templates']);
 
-app.controller("NavRorCtrl", function($scope, Auth){
+app.controller("NavRorCtrl",['$scope','Auth', function($scope, Auth){
 
    $scope.signedIn = Auth.isAuthenticated;
    $scope.logout = Auth.logout;
@@ -26,7 +28,7 @@ app.controller("NavRorCtrl", function($scope, Auth){
    $scope.$on('devise:logout', function (e, user){
      $scope.user = {};
    });
-});
+}]);
 
 
 

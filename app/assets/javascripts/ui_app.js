@@ -583,4 +583,120 @@ myapp.directive('myCurrentTime', ['$interval', 'dateFilter',
  }]); 
 
 
+myapp.controller("Addcheckin_Ctrl",  ["$scope", '$state', "$resource","Auth", '$stateParams',
+ function($scope, $state, $resource, Auth, $stateParams) {
+
+
+  $scope.checkinShipment = function(setting){
+   $scope.setting = setting;
+   $scope.package_id = $scope.setting.id;
+   $state.go('add_checkin');
+
+   var Checkin = $resource('/check_ins');
+
+     if ($scope.checkin_form.$valid && $scope.signedIn) {
+        $scope.newCheckin = Checkin.save({ package_id:$scope.package_id, tracking:$scope.tracking,location:$scope.location, notice:$scope.notice},
+  function(response) {
+     $scope.checkin_form.$setPristine();
+     $scope.checkin_form.$setUntouched();
+     $state.go('settings_detail');
+     },
+     function(data) {
+       $scope.alert = {type: "danger", message: "Package couldn't be saved" + response.status};
+     }
+ );
+     }
+  }
+
+}]);
+
+myapp.controller("Pkg_Ctrl",  ["$scope", '$state', "$resource","Auth",
+ function($scope, $state, $resource, Auth) {
+  $scope.signedIn = Auth.isAuthenticated;
+
+ $scope.closeAlert = function(index) {
+ $scope.alert = undefined;
+ };
+
+ var Categories = $resource('/categories.json');
+ $scope.categories = Categories.query();
+ //$scope.category = $scope.categories[0];
+
+ $scope.addNewShipment = function(){
+
+   var Package = $resource('/packages');
+
+  if ($scope.form.$valid) {
+  $scope.newShipment = Package.save({description:$scope.description, category_id:$scope.category,rv_name:$scope.rv_name, rv_email:$scope.rv_email, rv_phone:$scope.rv_phone, rv_street:$scope.rv_street, rv_city:$scope.rv_city, rv_zip:$scope.rv_zip, rv_state:$scope.rv_state, rv_country:$scope.rv_country, pk_name:$scope.pk_name, pk_street:$scope.pk_street, pk_city:$scope.pk_city, pk_state:$scope.pk_state, pk_zip:$scope.pk_zip, pk_country:$scope.pk_country },
+  function(response) {
+     $scope.form.$setPristine();
+     $scope.form.$setUntouched();
+     $state.go('express_settings');
+     },
+     function(data) {
+       $scope.alert = {
+          type: "danger", 
+          message: ("Package couldn't be saved" + data)
+        };
+     }
+ );
+ }
+ };
+
+ }]);
+
+
+myapp.controller('Checkin_Ctrl', ['$scope', '$http',
+  function($scope , $http) {
+   var page = 0;
+   $scope.checkins = [];
+   $scope.search = function(searchTerm) {
+    $http.get("/check_ins.json", { "params": { "tracks": searchTerm, "page": page } } ).then(function(response) { $scope.checkins = response.data; },
+  function(response) { alert("There was a problem: " + response.status); }  );
+  }
+  $scope.previousPage = function() {
+    if (page > 0) {
+     page = page - 1;
+     $scope.search($scope.tracks);
+    }
+  }
+  $scope.nextPage = function() {
+    page = page + 1;
+    $scope.search($scope.tracks);
+  }
+ }
+]);
+
+
+myapp.controller('Cust_Ctrl', [ '$scope', '$state','Auth', '$resource',  
+          function($scope, $state, Auth, $resource) {
+     
+     var Customer = $resource('/customers');
+ 
+     $scope.closeAlert = function(index) {
+       $scope.alert = undefined;
+     };
+
+     $scope.newCustomer = function(){
+        newcust = Customer.save({firstname:$scope.firstname,lastname:$scope.lastname,phone1:$scope.phone1},
+      function(response) {
+         $state.go('dashboard');
+     },
+      function(data) {
+        $scope.alert = {
+        type: 'danger',
+        message: "There are some errors in the customer information"
+      };
+ 
+    }
+   );
+     },
+   $scope.currentuser = Customer.get();
+   $scope.user = Auth.isAuthenticated;
+  // $scope.currentcustomer = $scope.currentuser[0];
+  
+
+}]);
+
+
 

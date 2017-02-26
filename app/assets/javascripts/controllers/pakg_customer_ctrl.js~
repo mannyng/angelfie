@@ -1,42 +1,12 @@
-var app = angular.module('pakg_app',
-     ['Devise',
-      'ngRoute',
-      'ngResource',
-      'ui.router',
-      'ui.grid',
-      'ui.grid.edit',
-       'ui.grid.cellNav',
-      'ui.bootstrap',
-      'templates']);
-
-app.controller("NavRorCtrl",['$scope','Auth', function($scope, Auth){
-
-   $scope.signedIn = Auth.isAuthenticated;
-   $scope.logout = Auth.logout;
-
-   Auth.currentUser().then(function (user){
-     $scope.user = user;
-   });
-   $scope.$on('devise:new-registration', function (e, user){
-     $scope.user = user;
-   });
-
-   $scope.$on('devise:login', function (e, user){
-     $scope.user = user;
-   });
-
-   $scope.$on('devise:logout', function (e, user){
-     $scope.user = {};
-   });
-}]);
-
-
+var app = angular.module('pakg_app');
 app.controller('Pakg_Cust_Ctrl',["$scope","$resource",
  function($scope, $resource) {
  var Customers = $resource('/customers');
+ var User = $resource('/api/user/:id');
  
  $scope.selectedCustomer = Customers[0];
  $scope.customerData = Customers.query();
+ $scope.userData = User.query({"id": $scope.customerData.id});
 
  $scope.gridOptions = {data: $scope.customerData,
                           
@@ -53,6 +23,3 @@ app.controller('Pakg_Cust_Ctrl',["$scope","$resource",
  };
 
 }]);
-
-
-
