@@ -4,6 +4,8 @@ var app = angular.module('pakg_app',
       'ngResource',
       'ui.router',
       'ui.grid',
+      'ui.grid.edit',
+       'ui.grid.cellNav',
       'ui.bootstrap',
       'templates']);
 

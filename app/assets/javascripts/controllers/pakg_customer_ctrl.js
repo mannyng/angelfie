@@ -8,13 +8,6 @@ app.controller('Pakg_Cust_Ctrl',["$scope","$resource",
  $scope.customerData = Customers.query();
  $scope.userData = User.query({"id": $scope.customerData.id});
 
- $scope.gridOptions = {};
- $scope.gridOptions.appScopeProvider = $scope.userData;
- $scope.role = function() {
-     $scope.userData.role;
-    console.log('You are here');
-  };
-
  $scope.gridOptions = {data: $scope.customerData,
                           
        columnDefs: [

@@ -9,7 +9,7 @@ myapp.controller("Pkg_Ctrl",  ["$scope", '$state', "$resource","Auth",
 
  var Categories = $resource('/categories.json');
  $scope.categories = Categories.query();
- $scope.category = $scope.categories[0];
+ //$scope.category = $scope.categories[0];
 
  $scope.addNewShipment = function(){
 

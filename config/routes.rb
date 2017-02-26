@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index]
   resources :check_ins, :packages, :settings, :customers
-  resources :user, only: [:edit, :update]
+  resources :user, only: [:edit, :update, :index]
 
   resources :packages do
     resource :check_ins
