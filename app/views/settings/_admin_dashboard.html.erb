@@ -1,0 +1,13 @@
+<div id="panel">
+  <div class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid admin-nav">
+        <h2 style="color:#FFF;">Admin Dashboard</h2>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="tab" class="<%= 'active' if current_page?(settings_manage_packages_path) %>"><%= link_to "Manage Packages", settings_manage_packages_path, :class=>"tab_link" %></li>
+            <li role="tab" class="<%= 'active' if current_page?(settings_manage_customers_path) %>"><%= link_to "Manage Customers", settings_manage_customers_path, :class=>"tab_link"  %></li>
+            <li role="tab" class="<%= 'active' if current_page?(settings_manage_checkins_path) %>"><%= link_to "Manage Checkins", settings_manage_checkins_path, :class=>"tab_link" %></li>
+        </ul>
+      </div>
+  </nav>
+</div>
+

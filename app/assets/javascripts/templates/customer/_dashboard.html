@@ -16,13 +16,25 @@
           <h2 class="h3 pull-right"><small class="text-uppercase">Last Name:  {{ currentuser.lastname }}</small></h2>
           <h2 class="h3"><small class="text-uppercase">First Name:  {{ currentuser.firstname }}</small></h2>
 
-        <h3 class="h5 pull-right" ng-controller="NavCtrl"><small class="text-uppercase">Role: </small> {{ user.role[1] }}</h3>
+        <h3 class="h5 pull-right" ng-controller="NavCtrl"><small class="text-uppercase">Role: </small> {{ user.role[0] }}</h3>
 
      <h3 class="h5"><small class="text-uppercase">Email: </small> {{ currentuser.email }}</h3> <hr/>
     <small class="text-uppercase pull-right">Phone: {{ currentuser.phone1 }}</small>
-    <button class="btn btn-info text-uppercase" ng-controller="NavCtrl" ng-show="signedIn()" ui-sref="express_settings1">Your Shipments</button>
+    <button class="btn btn-info text-uppercase" ng-controller="NavCtrl" ng-show="signedIn()" ui-sref="settings_detail">Your Shipments</button>
 </section>
 <!--</div>-->
 </article>
 </div>
+
+<div class="col-md-2">
+<ul class="nav nav-pills nav-stacked">
+  <li role="presentation"><a  ui-sref="add_shipment">Schedule pickup</a></li>
+  <li role="presentation" ng-controller="NavCtrl" ng-show="signedIn()"><a  href="express_settings">Shipments</a></li>
+  <li role="presentation"><a  ui-sref="express1_index">Customer Support</a></li>
+  <li role="presentation"><a ui-sref="internation">Export Services</a></li>
+  <li role="presentation"><a ui-sref="small_biz">Small Business Solutions</a></li>
+
+</ul>
+</div>
+
 </div>

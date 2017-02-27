@@ -1,0 +1,46 @@
+<% content_for :admin_content do %>
+
+ <article class="well well-sm">
+  <section class="search_form pull-right">
+    <header>
+      <h6>Search</h6>
+   </section>
+   <small>Customers</small>
+<%#= render partial: "pager", locals: { page: @page } %>
+<%= rel_next_prev_link_tags @customers %>
+    <table class="table table-striped table-sm">
+    <thead>
+     <tr>
+       <th>First Name</th>
+       <th>Last Name</th>
+       <th>Email</th>
+       <th>Phone</th>
+       <th>Roles</th>
+     </tr>
+</thead>
+
+<tbody>
+<% @customers.each do |customer| %>
+<tr>
+<td data-title="Firstname"><%= customer.firstname %></td>
+<td data-title="Lastname"><%= customer.lastname %></td>
+<td data-title="Email"><%= link_to customer.email, edit_customer_path(customer) %></td>
+<td data-title="Phone"><%= customer.phone1 %></td>
+<td data-title="Roles"><%= link_to customer.user.role, edit_user_path(customer.user_id) %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%#= render partial: "pager", locals: { page: @page } %>
+<%= paginate @customers %>
+
+</section>
+
+ <section class="footer">
+  <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
+   <%#= link_to 'Create Customer', new_user_registration_path, :class => "btn btn-primary formButton"  %>
+ </section>
+
+</article>
+<% end %>
+

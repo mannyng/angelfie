@@ -1,0 +1,37 @@
+<% content_for :admin_content do %>
+
+ <article class="well well-sm">
+    <table class="table table-striped">
+    <small>Tracking List</small>
+   <thead>
+     <tr>
+       <th>Notice</th>
+       <th>Location</th>
+       <th>Tracking</th>
+       <th>Check In</th>
+     </tr>
+</thead>
+<tbody>
+<% @checkin_settings.each do |tracking| %>
+<tr>
+<td data-title="Notice "><%= tracking.notice %></td>
+<td data-title="Location "><%= tracking.location %></td>
+<td data-title="Tracking"><%= link_to tracking.tracking, check_in_path(tracking) %></td>
+<td data-title="Check In"><%= tracking.time_checked_in.strftime("%b %d %Y %I:%M:%P") %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%#= render partial: "pager", locals: {checkin_settings: @checkin_settings, page: @page } %>
+
+<%= paginate @checkin_settings %>
+<%= render partial: "checkin_pager"%>
+</section>
+
+ <section class="footer">
+  <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
+   <%#= link_to 'Create Customer', new_user_registration_path, :class => "btn btn-primary formButton"  %>
+ </section>
+
+</article>
+<% end %>

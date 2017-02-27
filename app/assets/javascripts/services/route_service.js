@@ -10,29 +10,9 @@ myapp.config(['$routeProvider',
       templateUrl: 'home.html',
       controller: 'Home_Ctrl'
      })
-      .when('/contacts', {
-        templateUrl: 'contacts.html',
-         controller: 'Home_Ctrl'
-      })
-      .when('contacts/lists', {
-        templateUrl: 'contacts.lists.html',
-        controller: 'Home_Ctrl'
-       })
-      .when('packages', {
-        templateUrl: 'packages.html',
-        controller: 'Pkg_Ctrl'
-       })
-      .when('packages/tracking', {
-        templateUrl: 'tracking.html',
-        controller: 'Pkg_Ctrl'
-       })
-       .when('packages.details', {
-        templateUrl: 'packages.details.html',
-        controller: 'Stng_Ctrl'
-       })
-      .when('customers', {
-        templateUrl: 'customers.html',
-        controller: 'Ctmr_Ctrl'
+      .when('dashboard', {
+        templateUrl: '_dashboard.html',
+        controller: 'Cust_Ctrl'
        })
       .when('customers/profile', {
        templateUrl: 'profile.html',
@@ -46,30 +26,33 @@ myapp.config(['$routeProvider',
        templateUrl: 'auth/_register.html',
        controller: 'AuthCtrl'
       })
-      .when('/settings', {
-       templateUrl: 'setting.html',
-       controller: 'Stng_Ctrl'
-      })
-      .when('/settings/:id', {
-        templateUrl: 'settings.details.html',
-        controller: 'ShipmentDetailController'
-       })
-       .when('shipments', {
-         templateUrl: 'shipments/_shipments.html'
-        })
-       .when('shipments/list', { 
-         templateUrl: 'shipments/_shipments.list.html'
-        })
-       .when('shipments/:shipmentId', {
-         templateUrl: 'shipments/_shipments.detail.html'
-        }) 
-      .when('/express', {
+      .when('express', {
        templateUrl: 'express/_index.html',
        controller: 'Exp_Ctrl'
        })
       .when('add_shipment', {
        templateUrl: 'express/_add_shipment.html',
        controller: 'Pkg_Ctrl'
+       })
+       .when('express_index', {
+       templateUrl: 'express/_express.html',
+       controller: 'Exp1_Ctrl'
+       })
+      .when('express1_index', {
+       templateUrl: 'express/_express1.html',
+       controller: 'Exp1_Ctrl'
+       })
+       .when('express_settings', {
+       templateUrl: 'express/_express_settings.html',
+       controller: 'Stng_Ctrl'
+       })
+       .when('settings_detail', {
+       templateUrl: 'express/_settings_detail.html',
+       controller: 'Setting_Detail_Ctrl'
+       })
+      .when('add_checkin', {
+       templateUrl: 'express/_add_checkin.html',
+       controller: 'Addcheckin_Ctrl'
        })
       .otherwise({
         redirectTo: '/'

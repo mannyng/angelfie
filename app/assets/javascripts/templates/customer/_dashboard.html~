@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col-md-6 col-md-offset-2">
-<h2 class="h4">Welcome <small> {{currentuser.firstname}} you are an <section ng-controller="NavCtrl">{{user.role[1]}}</section></small></h2>
+<h2 class="h4">Welcome <small> {{currentuser.firstname}} you are an <section ng-controller="NavCtrl">{{user.role[0]}}</section></small></h2>
 </div>
 </div>
 

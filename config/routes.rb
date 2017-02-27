@@ -5,12 +5,18 @@ Rails.application.routes.draw do
  root to: 'home#index'
 
   resources :categories, only: [:index]
-  resources :check_ins, :packages, :settings, :customers
+  resources :check_ins, :packages, :customers
   resources :user, only: [:edit, :update, :index]
 
   resources :packages do
     resource :check_ins
   end
+
+   get 'settings/manage_customers' => 'settings#manage_customers'
+   get 'settings/manage_packages' => 'settings#manage_packages'
+   get 'settings/manage_checkins' => 'settings#manage_checkins'
+
+  resources :settings, only: [:index]
 
   resources :admin, only: [:index]
 

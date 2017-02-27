@@ -1,0 +1,39 @@
+<% content_for :admin_content do %>
+
+ <article class="well well-sm">
+   <small>Packages</small>
+<%#= render partial: "pager", locals: { page: @page } %>
+  <%#= rel_next_prev_link_tags @package_settings %>
+  <%= paginate (@package_settings) %>
+    <table class="table table-striped clearfix">
+    <thead>
+     <tr>
+       <th>Description</th>
+       <th>City</th>
+       <th>Tracking</th>
+       <th>Shipped</th>
+     </tr>
+</thead>
+<tbody>
+<% @package_settings.each do |shipment| %>
+<tr>
+<td data-title="Description "><%= shipment.description %></td>
+<td data-title="City "><%= shipment.rv_city %></td>
+<td data-title="Tracking "><%= link_to shipment.tracking, new_package_check_ins_path(shipment) %></td>
+<td data-title="Shipped "><%= l shipment.created_at.to_date %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%#= render partial: "pager", locals: { page: @page } %>
+<%= paginate @package_settings %>
+
+ <section class="footer">
+  <%= link_to 'Back', :back, :class => "btn btn-primary formButton"  %>
+   <%#= link_to 'Create Customer', new_user_registration_path, :class => "btn btn-primary formButton"  %>
+</section>
+
+</article>
+<% end %>
+ 
+

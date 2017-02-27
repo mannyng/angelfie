@@ -1,3 +1,5 @@
+<%#= render partial: 'admin_dashboard' %>
+
 <div class="row" class="clearfix">
  
   <div class="col-md-2 col-xs-2">
@@ -105,19 +107,13 @@
 
 </div>
 
- <article>
-    <div ng-controller="Pakg_Cust_Ctrl" class="col-md-10 col-xs-12">
-      <div id="grid1" ui-grid="gridOptions" class="grid" ></div>
-      <div ng-style="{ height: col.headerRowHeight }" ng-repeat="col in customerData" ng-class="col.colIndex()" class="ngHeaderCell" ng-header-cell></div>
-    </div>
-</article>
- <article>
+ <!--<article>
     <div ng-controller="Pakg_User_Ctrl" class="col-md-10 col-xs-12">
       <button type="button" class="btn btn-success" ng-click="getCurrentFocus()">Get Current focused cell</button>  <span ng-bind="currentFocused"></span>
     <br/>
       <div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav class="grid" ></div>
     </div>
- </article>
+ </article>-->
 
 
 </div>

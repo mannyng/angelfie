@@ -50,7 +50,20 @@
     </aside>
    <% end %>
 
-    <%= yield %>
+        <main>
+                <!-- render "Admin-only" navigation partial -->
+                <%= render partial: 'admin_dashboard' %>
+                <div id="admin_content">
+                        <% if content_for?(:admin_content) %>
+                        <!-- dynamically render page content -->
+                                <%= yield(:admin_content) %>
+                        <% else %>
+                                <h3>Welcome to the Administrators Dashboard</h3>
+                                <p>Please select an action above to get started</p>
+                        <% end %>
+                </div>
+        </main>
+    <%#= yield %>
 
 <footer style="margin-top: 20px; padding-top: 20px;">&copy Angelfie <section class="pull-right"><small>Paulson & agents <% if user_signed_in? && current_user.role.include?("admin") %>  <ul class="nav nav-pills nav-stacked">
    <li role="presentation"><%= link_to "Settings", settings_path %></li>
